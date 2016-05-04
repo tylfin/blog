@@ -1,7 +1,12 @@
+path = require('path');
+
 module.exports = {
-    entry: './app/scripts/index.jsx',
+    entry: {
+        blogPosts : './app/scripts/components/blogPosts.jsx',
+    },
     output: {
-        filename: './public/static/bundle.js',
+        path: path.join(__dirname, "./public/static/scripts/components"),
+        filename: "[name].js"
     },
     module: {
         loaders: [

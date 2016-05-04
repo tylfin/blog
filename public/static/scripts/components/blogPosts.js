@@ -54,8 +54,7 @@
 	  displayName: 'BlogPostBox',
 
 	  getInitialState: function getInitialState() {
-	    return { data: [], showData: [], start: 0, stop: 3, page: 1,
-	      perPage: 3 };
+	    return { data: [], showData: [], page: 1, perPage: 3 };
 	  },
 
 	  componentDidMount: function componentDidMount() {
@@ -66,7 +65,7 @@
 	      success: function (data) {
 	        var showData = [];
 	        if (data.length > this.state.perPage) {
-	          showData = data.slice(this.state.start, this.state.stop);
+	          showData = data.slice(0, this.state.perPage);
 	        } else {
 	          showData = data;
 	        }
@@ -80,8 +79,9 @@
 
 	  updatePage: function updatePage(newPage) {
 	    var start = (newPage - 1) * this.state.perPage;
-	    var stop = newPage * this.state.perPage;
-	    this.setState({ start: start, stop: stop });
+	    var end = newPage * this.state.perPage;
+	    var showData = this.state.data.slice(start, end);
+	    this.setState({ showData: showData, page: newPage });
 	  },
 
 	  render: function render() {
@@ -100,7 +100,7 @@
 	  generatePageNodes: function generatePageNodes() {
 	    var total = Math.ceil(this.props.data.length / this.props.perPage);
 	    var pageNodes = [];
-	    for (var i = 1; i < total; i++) {
+	    for (var i = 1; i <= total; i++) {
 	      if (i === this.props.page) {
 	        pageNodes.push(React.createElement(
 	          'li',
@@ -119,7 +119,7 @@
 	          { key: i },
 	          React.createElement(
 	            'a',
-	            { 'aria-label': 'Page {i}' },
+	            { onClick: this.props.updatePage.bind(null, i), 'aria-label': 'page' },
 	            i
 	          )
 	        ));
@@ -130,6 +130,7 @@
 
 	  render: function render() {
 	    var total = Math.ceil(this.props.data.length / this.props.perPage);
+	    console.log(total);
 	    var pageNodes = this.generatePageNodes();
 	    if (pageNodes.length <= 1) {
 	      return React.createElement('div', null);
@@ -142,7 +143,7 @@
 	        { className: 'pagination', role: 'navigation', 'aria-label': 'Pagination' },
 	        React.createElement(
 	          'li',
-	          { className: this.props.page === 1 ? 'disabled' : '' },
+	          { className: this.props.page === 1 ? 'disabled' : '', onClick: this.props.updatePage.bind(null, this.props.page - 1) },
 	          'Previous'
 	        ),
 	        pageNodes,
@@ -151,7 +152,7 @@
 	          null,
 	          React.createElement(
 	            'a',
-	            { href: '#', className: this.props.page === total ? 'disabled' : '', 'aria-label': 'Next page' },
+	            { href: '#', onClick: this.props.updatePage.bind(null, this.props.page + 1), className: this.props.page === total ? 'disabled' : '', 'aria-label': 'Next page' },
 	            'Next'
 	          )
 	        )

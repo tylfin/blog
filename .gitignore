@@ -63,3 +63,4 @@ target/
 
 #Custom
 venv/
+node_modules/

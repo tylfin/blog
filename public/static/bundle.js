@@ -49,8 +49,8 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(33);
 
-	var BlogPosts = React.createClass({
-	  displayName: 'BlogPosts',
+	var BlogPostBox = React.createClass({
+	  displayName: 'BlogPostBox',
 
 	  render: function render() {
 	    return React.createElement(
@@ -58,6 +58,14 @@
 	      { className: 'row medium-8 large-7 columns' },
 	      React.createElement(BlogPost, null)
 	    );
+	  }
+	});
+
+	var BlogPostList = React.createClass({
+	  displayName: 'BlogPostList',
+
+	  render: function render() {
+	    return React.createElement('div', null);
 	  }
 	});
 
@@ -114,7 +122,7 @@
 	  }
 	});
 
-	ReactDOM.render(React.createElement(BlogPosts, null), document.getElementById('blogPost'));
+	ReactDOM.render(React.createElement(BlogPostBox, null), document.getElementById('blogPost'));
 
 /***/ },
 /* 1 */

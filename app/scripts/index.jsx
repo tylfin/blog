@@ -3,13 +3,19 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var BlogPosts = React.createClass({
+var BlogPostBox = React.createClass({
   render: function() {
     return (
       <div className="row medium-8 large-7 columns">
         <BlogPost />
       </div>
     );
+  }
+});
+
+var BlogPostList = React.createClass({
+  render: function () {
+    return (<div></div>);
   }
 });
 
@@ -27,12 +33,12 @@ var BlogPost = React.createClass({
           </ul>
         </div>
       </div>
-    )
+    );
   }
-})
+});
 
 
 ReactDOM.render(
-  <BlogPosts />,
+  <BlogPostBox />,
   document.getElementById('blogPost')
 );

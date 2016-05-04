@@ -2,7 +2,7 @@ import os
 
 CONFIGS = {}
 
-CONFIGS['DEBUG'] = True
+CONFIGS['DEBUG'] = False
 
 CONFIGS['STATIC_PATH'] = os.path.join(os.getcwd(), 'public/static')
 

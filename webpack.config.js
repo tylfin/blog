@@ -2,7 +2,7 @@ path = require('path');
 
 module.exports = {
     entry: {
-        blogPosts : './app/scripts/components/blogPosts.jsx',
+        'blog-posts' : './app/scripts/components/blog-posts.jsx',
     },
     output: {
         path: path.join(__dirname, "./public/static/scripts/components"),

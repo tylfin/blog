@@ -12,24 +12,26 @@
 </head>
 <body>
   <div class="top-bar">
-    <div style="font-size:150%;" class="row fullWidth">
-      <div class="large-4 small-12 columns text-left small-only-text-center">
+    <div style="font-size:120%;" class="row fullWidth">
+      <div class="medium-4 small-12 columns text-left small-only-text-center">
         <a style="padding-left:.7em; padding-right:.7em;" href="#">Blog</a>
         <a style="padding-left:.7em; padding-right:.7em;" href="#">Resume</a>
         <a style="padding-left:.7em; padding-right:.7em;" href="#">Contact</a>
       </div>
-      <div class="large-4 small-12 columns text-center small-only-text-center">
-        <i class="fi-social-github small"></i>
-      </div>
-      <div class="large-4 small-12 columns text-right small-only-text-center">
-        <a href="#"><i style="padding-right:.7em; padding-left: .7em;"class="fi-social-github small"></i></a>
-        <a href="#"><i style="padding-right:.7em; padding-left: .7em;"class="fi-social-twitter small"></i></a>
-        <a href="#"><i style="padding-right:.7em; padding-left: .7em;"class="fi-social-instagram small"></i></a>
+      <div class="show-for-medium">
+        <div class="medium-4 small-12 columns text-center small-only-text-center">
+          <i class="fi-social-github small"></i>
+        </div>
+        <div class="medium-4 small-12 columns text-right small-only-text-center">
+          <a href="#"><i style="padding-right:.7em; padding-left: .7em;"class="fi-social-github small"></i></a>
+          <a href="#"><i style="padding-right:.7em; padding-left: .7em;"class="fi-social-twitter small"></i></a>
+          <a href="#"><i style="padding-right:.7em; padding-left: .7em;"class="fi-social-instagram small"></i></a>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="show-for-medium-only" style="padding-top: 4em;"></div>
+  <!-- <div class="show-for-medium-only" style="padding-top: 2.5em;"></div> -->
   <div class="show-for-medium">
     <div class="callout large primary">
       <div style="padding-top: 3em;" class="row column text-center">
@@ -38,7 +40,7 @@
       </div>
     </div>
   </div>
-  <div class="show-for-small-only" style="padding-top: 9.5em;"></div>
+  <div class="show-for-small-only" style="padding-top: 5em;"></div>
   <div id="content">{% block content %}{% endblock %}</div>
   <div id="footer">
     {% block footer %}

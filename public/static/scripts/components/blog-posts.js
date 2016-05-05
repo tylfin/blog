@@ -30170,7 +30170,7 @@
 	          { key: i },
 	          React.createElement(
 	            "a",
-	            { onClick: this.props.updatePage.bind(null, i), "aria-label": "page" },
+	            { href: "#", onClick: this.props.updatePage.bind(null, i), "aria-label": "page" },
 	            i
 	          )
 	        ));
@@ -30193,8 +30193,12 @@
 	        { className: "pagination", role: "navigation", "aria-label": "Pagination" },
 	        React.createElement(
 	          "li",
-	          { className: this.props.page === 1 ? 'disabled' : '', onClick: this.props.updatePage.bind(null, this.props.page - 1) },
-	          "Previous"
+	          null,
+	          React.createElement(
+	            "a",
+	            { href: "#", className: this.props.page === 1 ? 'disabled' : '', onClick: this.props.updatePage.bind(null, this.props.page - 1) },
+	            "Previous"
+	          )
 	        ),
 	        pageNodes,
 	        React.createElement(

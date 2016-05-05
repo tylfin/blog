@@ -9,7 +9,7 @@ var BlogPostPagination = React.createClass({
         pageNodes.push(<li key={i} className="current"><span className="show-for-sr">You're on page</span> {i}</li>)
       }
       else {
-        pageNodes.push(<li key={i}><a onClick={this.props.updatePage.bind(null, i)} aria-label="page">{i}</a></li>)
+        pageNodes.push(<li key={i}><a href="#" onClick={this.props.updatePage.bind(null, i)} aria-label="page">{i}</a></li>)
       }
     }
     return pageNodes
@@ -24,7 +24,7 @@ var BlogPostPagination = React.createClass({
     return (
       <div className="row column">
         <ul className="pagination" role="navigation" aria-label="Pagination">
-          <li className={(this.props.page === 1) ? 'disabled' : ''} onClick={this.props.updatePage.bind(null, this.props.page - 1)}>Previous</li>
+          <li><a href="#" className={(this.props.page === 1) ? 'disabled' : ''} onClick={this.props.updatePage.bind(null, this.props.page - 1)}>Previous</a></li>
             {pageNodes}
           <li><a href="#" onClick={this.props.updatePage.bind(null, this.props.page + 1)} className={(this.props.page === total) ? 'disabled' : ''} aria-label="Next page">Next</a></li>
         </ul>

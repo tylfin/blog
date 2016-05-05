@@ -64,7 +64,6 @@ var PaginateBlogPosts = React.createClass({
 
   render: function() {
     var total = Math.ceil(this.props.data.length / this.props.perPage);
-    console.log(total);
     var pageNodes = this.generatePageNodes();
     if (pageNodes.length <= 1) {
       return (<div></div>)

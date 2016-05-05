@@ -2,9 +2,9 @@
 <html>
 <head>
   {% block head %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.min.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
-  <link href="{{ url_for('static', filename='icons/foundation-icons.css' )}}" rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}" />
+  <link href="{{ url_for('static', filename='icons/foundation-icons.css' )}}" rel='stylesheet' type='text/css' />
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{% block title %}{% endblock %} | tylfin</title>
@@ -12,21 +12,33 @@
 </head>
 <body>
   <div class="top-bar">
-    <div class="top-bar-left">
-      <ul class="menu">
-        <li class="menu-text">@tylfin</li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Resume</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
+    <div style="font-size:150%;" class="row fullWidth">
+      <div class="large-4 small-12 columns text-left small-only-text-center">
+        <a style="padding-left:.7em; padding-right:.7em;" href="#">Blog</a>
+        <a style="padding-left:.7em; padding-right:.7em;" href="#">Resume</a>
+        <a style="padding-left:.7em; padding-right:.7em;" href="#">Contact</a>
+      </div>
+      <div class="large-4 small-12 columns text-center small-only-text-center">
+        <i class="fi-social-github small"></i>
+      </div>
+      <div class="large-4 small-12 columns text-right small-only-text-center">
+        <a href="#"><i style="padding-right:.7em; padding-left: .7em;"class="fi-social-github small"></i></a>
+        <a href="#"><i style="padding-right:.7em; padding-left: .7em;"class="fi-social-twitter small"></i></a>
+        <a href="#"><i style="padding-right:.7em; padding-left: .7em;"class="fi-social-instagram small"></i></a>
+      </div>
     </div>
   </div>
-  <div class="callout large primary">
-    <div class="row column text-center">
-      <h1>TODO</h1>
-      <h2 class="subheader">TODO</h2>
+
+  <div class="show-for-medium-only" style="padding-top: 4em;"></div>
+  <div class="show-for-medium">
+    <div class="callout large primary">
+      <div style="padding-top: 3em;" class="row column text-center">
+        <h1>TODO</h1>
+        <h2 class="subheader">TODO</h2>
+      </div>
     </div>
   </div>
+  <div class="show-for-small-only" style="padding-top: 9.5em;"></div>
   <div id="content">{% block content %}{% endblock %}</div>
   <div id="footer">
     {% block footer %}
@@ -64,4 +76,6 @@
     {% endblock %}
   </div>
 </body>
+<link href="{{ url_for('static', filename='scripts/vendor/foundation.js') }}">
+<link href="{{ url_for('static', filename='scripts/app.js') }}">
 </html>

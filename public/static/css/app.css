@@ -1,5 +1,12 @@
-.full-width {
+/*.full-width {
   max-width: 1400px;
+}*/
+
+.fullWidth {
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   max-width: initial;
 }
 
 .footer {
@@ -39,6 +46,23 @@
   margin-top: .5em;
 }
 
+i.tiny  { font-size: 1.5rem; }
 i.small  { font-size: 2rem; }
 i.medium  { font-size: 5rem; }
 i.large  { font-size: 10rem; }
+
+.top-bar {
+  padding: 0.5rem;
+  box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  top: 0;
+  position:fixed;
+  width:100%;
+  z-index: 100;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);*/
+}
+
+.top-bar ul {
+  background-color: #fff;
+}

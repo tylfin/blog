@@ -66,3 +66,18 @@ i.large  { font-size: 10rem; }
 .top-bar ul {
   background-color: #fff;
 }
+
+.top-bar-text-padding a {
+  padding-left:.7em;
+  padding-right:.7em;
+}
+
+.front-banner {
+  padding-top: 24px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 250px !important;
+  border: 0px;
+  background-size: 100% 275px;
+  box-shadow: 0 0 5px 2px #555;
+}

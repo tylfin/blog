@@ -48,7 +48,7 @@
 
 	var ReactDOM = __webpack_require__(1);
 	var React = __webpack_require__(162);
-	var BlogPostBox = __webpack_require__(168);
+	var BlogPostBox = __webpack_require__(173);
 
 	ReactDOM.render(React.createElement(BlogPostBox, { url: '/api/posts' }), document.getElementById('blog-posts'));
 
@@ -20141,63 +20141,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 168 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(162);
-	var $ = __webpack_require__(169);
-	var BlogPostList = __webpack_require__(170);
-	var PaginateBlogPosts = __webpack_require__(172);
-
-	var BlogPostBox = React.createClass({
-	  displayName: 'BlogPostBox',
-
-	  getInitialState: function getInitialState() {
-	    return { data: [], showData: [], page: 1, perPage: 3 };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    $.ajax({
-	      url: this.props.url,
-	      dataType: 'json',
-	      cache: false,
-	      success: function (data) {
-	        var showData = [];
-	        if (data.length > this.state.perPage) {
-	          showData = data.slice(0, this.state.perPage);
-	        } else {
-	          showData = data;
-	        }
-	        this.setState({ showData: showData, data: data });
-	      }.bind(this),
-	      error: function (xhr, status, err) {
-	        console.error(this.props.url, status, err.toString());
-	      }.bind(this)
-	    });
-	  },
-
-	  updatePage: function updatePage(newPage) {
-	    var start = (newPage - 1) * this.state.perPage;
-	    var end = newPage * this.state.perPage;
-	    var showData = this.state.data.slice(start, end);
-	    this.setState({ showData: showData, page: newPage });
-	  },
-
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      { className: 'row medium-8 large-7 columns' },
-	      React.createElement(BlogPostList, { data: this.state.showData }),
-	      React.createElement(PaginateBlogPosts, { data: this.state.data, page: this.state.page, perPage: this.state.perPage, updatePage: this.updatePage })
-	    );
-	  }
-	});
-
-	module.exports = BlogPostBox;
-
-/***/ },
+/* 168 */,
 /* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30046,13 +29990,73 @@
 
 
 /***/ },
-/* 170 */
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(162);
-	var BlogPost = __webpack_require__(171);
+	var $ = __webpack_require__(169);
+	var BlogPostList = __webpack_require__(174);
+	var PaginateBlogPosts = __webpack_require__(176);
+
+	var BlogPostBox = React.createClass({
+	  displayName: 'BlogPostBox',
+
+	  getInitialState: function getInitialState() {
+	    return { data: [], showData: [], page: 1, perPage: 3 };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    $.ajax({
+	      url: this.props.url,
+	      dataType: 'json',
+	      cache: false,
+	      success: function (data) {
+	        var showData = [];
+	        if (data.length > this.state.perPage) {
+	          showData = data.slice(0, this.state.perPage);
+	        } else {
+	          showData = data;
+	        }
+	        this.setState({ showData: showData, data: data });
+	      }.bind(this),
+	      error: function (xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }.bind(this)
+	    });
+	  },
+
+	  updatePage: function updatePage(newPage) {
+	    var start = (newPage - 1) * this.state.perPage;
+	    var end = newPage * this.state.perPage;
+	    var showData = this.state.data.slice(start, end);
+	    this.setState({ showData: showData, page: newPage });
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'row medium-8 large-7 columns' },
+	      React.createElement(BlogPostList, { data: this.state.showData }),
+	      React.createElement(PaginateBlogPosts, { data: this.state.data, page: this.state.page, perPage: this.state.perPage, updatePage: this.updatePage })
+	    );
+	  }
+	});
+
+	module.exports = BlogPostBox;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(162);
+	var BlogPost = __webpack_require__(175);
 
 	var BlogPostList = React.createClass({
 	  displayName: 'BlogPostList',
@@ -30073,7 +30077,7 @@
 	module.exports = BlogPostList;
 
 /***/ },
-/* 171 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30138,15 +30142,16 @@
 	module.exports = BlogPost;
 
 /***/ },
-/* 172 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var React = __webpack_require__(162);
+	var $ = __webpack_require__(169);
 
 	var BlogPostPagination = React.createClass({
-	  displayName: "BlogPostPagination",
+	  displayName: 'BlogPostPagination',
 
 	  generatePageNodes: function generatePageNodes() {
 	    var total = Math.ceil(this.props.data.length / this.props.perPage);
@@ -30154,23 +30159,23 @@
 	    for (var i = 1; i <= total; i++) {
 	      if (i === this.props.page) {
 	        pageNodes.push(React.createElement(
-	          "li",
-	          { key: i, className: "current" },
+	          'li',
+	          { key: i, className: 'current' },
 	          React.createElement(
-	            "span",
-	            { className: "show-for-sr" },
-	            "You're on page"
+	            'span',
+	            { className: 'show-for-sr' },
+	            'You\'re on page'
 	          ),
-	          " ",
+	          ' ',
 	          i
 	        ));
 	      } else {
 	        pageNodes.push(React.createElement(
-	          "li",
+	          'li',
 	          { key: i },
 	          React.createElement(
-	            "a",
-	            { href: "#", onClick: this.props.updatePage.bind(null, i), "aria-label": "page" },
+	            'a',
+	            { onClick: this.callOnClick.bind(null, i), 'aria-label': 'page' },
 	            i
 	          )
 	        ));
@@ -30179,35 +30184,40 @@
 	    return pageNodes;
 	  },
 
+	  callOnClick: function callOnClick(pageNumber) {
+	    this.props.updatePage(pageNumber);
+	    $('html, body').animate({ scrollTop: 0 }, 'fast');
+	  },
+
 	  render: function render() {
 	    var total = Math.ceil(this.props.data.length / this.props.perPage);
 	    var pageNodes = this.generatePageNodes();
 	    if (pageNodes.length <= 1) {
-	      return React.createElement("div", null);
+	      return React.createElement('div', null);
 	    }
 	    return React.createElement(
-	      "div",
-	      { className: "row column" },
+	      'div',
+	      { className: 'row column' },
 	      React.createElement(
-	        "ul",
-	        { className: "pagination", role: "navigation", "aria-label": "Pagination" },
+	        'ul',
+	        { className: 'pagination', role: 'navigation', 'aria-label': 'Pagination' },
 	        React.createElement(
-	          "li",
+	          'li',
 	          null,
 	          React.createElement(
-	            "a",
-	            { href: "#", className: this.props.page === 1 ? 'disabled' : '', onClick: this.props.updatePage.bind(null, this.props.page - 1) },
-	            "Previous"
+	            'a',
+	            { className: this.props.page === 1 ? 'disabled' : '', onClick: this.callOnClick.bind(null, this.props.page - 1) },
+	            'Previous'
 	          )
 	        ),
 	        pageNodes,
 	        React.createElement(
-	          "li",
+	          'li',
 	          null,
 	          React.createElement(
-	            "a",
-	            { href: "#", onClick: this.props.updatePage.bind(null, this.props.page + 1), className: this.props.page === total ? 'disabled' : '', "aria-label": "Next page" },
-	            "Next"
+	            'a',
+	            { onClick: this.callOnClick.bind(null, this.props.page + 1), className: this.props.page === total ? 'disabled' : '', 'aria-label': 'Next page' },
+	            'Next'
 	          )
 	        )
 	      )

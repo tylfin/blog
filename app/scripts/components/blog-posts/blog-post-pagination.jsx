@@ -1,4 +1,5 @@
 var React = require('react');
+var $ = require('jquery');
 
 var BlogPostPagination = React.createClass({
   generatePageNodes: function() {
@@ -9,10 +10,15 @@ var BlogPostPagination = React.createClass({
         pageNodes.push(<li key={i} className="current"><span className="show-for-sr">You're on page</span> {i}</li>)
       }
       else {
-        pageNodes.push(<li key={i}><a href="#" onClick={this.props.updatePage.bind(null, i)} aria-label="page">{i}</a></li>)
+        pageNodes.push(<li key={i}><a onClick={this.callOnClick.bind(null, i)} aria-label="page">{i}</a></li>)
       }
     }
     return pageNodes
+  },
+
+  callOnClick: function(pageNumber) {
+    this.props.updatePage(pageNumber);
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
   },
 
   render: function() {
@@ -24,9 +30,9 @@ var BlogPostPagination = React.createClass({
     return (
       <div className="row column">
         <ul className="pagination" role="navigation" aria-label="Pagination">
-          <li><a href="#" className={(this.props.page === 1) ? 'disabled' : ''} onClick={this.props.updatePage.bind(null, this.props.page - 1)}>Previous</a></li>
+          <li><a className={(this.props.page === 1) ? 'disabled' : ''} onClick={this.callOnClick.bind(null, this.props.page - 1)}>Previous</a></li>
             {pageNodes}
-          <li><a href="#" onClick={this.props.updatePage.bind(null, this.props.page + 1)} className={(this.props.page === total) ? 'disabled' : ''} aria-label="Next page">Next</a></li>
+          <li><a onClick={this.callOnClick.bind(null, this.props.page + 1)} className={(this.props.page === total) ? 'disabled' : ''} aria-label="Next page">Next</a></li>
         </ul>
       </div>
     )

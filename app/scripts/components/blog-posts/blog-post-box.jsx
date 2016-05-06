@@ -33,7 +33,10 @@ var BlogPostBox = React.createClass({
     var start = (newPage - 1) * this.state.perPage;
     var end = newPage * this.state.perPage;
     var showData = this.state.data.slice(start, end);
-    this.setState({showData: showData, page: newPage});
+    $('html, body').animate({ scrollTop: 0 }, 'slow',
+    function() {
+      this.setState({showData: showData, page: newPage});
+    }.bind(this));
   },
 
   render: function() {

@@ -15,6 +15,10 @@ def internal_error(error = None):
 def index():
     return render_template('index.html')
 
+@app.route('/blog-posts')
+def blog_posts():
+    return render_template('blog-posts.html')
+
 @app.route('/api/posts')
 def posts():
     blog_posts = []

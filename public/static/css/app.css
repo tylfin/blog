@@ -10,7 +10,8 @@
 }
 
 .footer {
-  background-color: #def0fc;
+  /*background-color: #def0fc;*/
+  background-color: #FFFFFF;
   padding: 1rem 4rem;
   text-align: center;
   color: #0a0a0a;

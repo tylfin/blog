@@ -2,11 +2,13 @@
 <html>
 <head>
   {% block head %}
+  <!-- CSS AND ICONS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.min.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}" />
   <link href="{{ url_for('static', filename='icons/foundation-icons.css' )}}" rel='stylesheet' type='text/css' />
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- TITLE  -->
   <title>{% block title %}{% endblock %} | tylfin</title>
   {% endblock %}
 </head>
@@ -15,8 +17,7 @@
     <div style="font-size:120%;" class="row fullWidth">
       <div class="medium-4 small-12 columns text-left small-only-text-center top-bar-text-padding">
         <a href="/blog-posts">Blog</a>
-        <a href="#">Resume</a>
-        <a href="#">Contact</a>
+        <a href="/resume">Resume</a>
       </div>
       <div class="show-for-medium">
         <div class="medium-4 small-12 columns text-center small-only-text-center">
@@ -31,7 +32,6 @@
     </div>
   </div>
 
-  <!-- <div class="show-for-medium-only" style="padding-top: 2.5em;"></div> -->
   <div class="show-for-medium">
     <div style="background-image:url({{ url_for('static', filename='img/tmp-banner.jpg') }})"  class="front-banner callout large primary">
       <div class="row column text-center">

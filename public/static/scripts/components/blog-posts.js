@@ -48,7 +48,7 @@
 
 	var ReactDOM = __webpack_require__(1);
 	var React = __webpack_require__(162);
-	var BlogPostBox = __webpack_require__(173);
+	var BlogPostBox = __webpack_require__(168);
 
 	ReactDOM.render(React.createElement(BlogPostBox, { url: '/api/posts' }), document.getElementById('blog-posts'));
 
@@ -20141,7 +20141,69 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 168 */,
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(162);
+	var $ = __webpack_require__(169);
+	var BlogPostList = __webpack_require__(170);
+	var PaginateBlogPosts = __webpack_require__(172);
+
+	var BlogPostBox = React.createClass({
+	  displayName: 'BlogPostBox',
+
+	  propTypes: {
+	    url: React.PropTypes.string
+	  },
+	  getInitialState: function getInitialState() {
+	    return { data: [], showData: [], page: 1, perPage: 3 };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    $.ajax({
+	      url: this.props.url,
+	      dataType: 'json',
+	      cache: false,
+	      success: function (data) {
+	        var showData = [];
+	        if (data.length > this.state.perPage) {
+	          showData = data.slice(0, this.state.perPage);
+	        } else {
+	          showData = data;
+	        }
+	        this.setState({ showData: showData, data: data });
+	      }.bind(this),
+	      error: function (xhr, status, err) {
+	        /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
+	        console.error(this.props.url, status, err.toString());
+	      }.bind(this)
+	    });
+	  },
+
+	  updatePage: function updatePage(newPage) {
+	    var start = (newPage - 1) * this.state.perPage;
+	    var end = newPage * this.state.perPage;
+	    var showData = this.state.data.slice(start, end);
+	    $('html, body').animate({ scrollTop: 0 }, 'slow', function () {
+	      this.setState({ showData: showData, page: newPage });
+	    }.bind(this));
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'row medium-8 large-7 columns' },
+	      React.createElement(BlogPostList, { data: this.state.showData }),
+	      React.createElement(PaginateBlogPosts, { data: this.state.data, page: this.state.page, perPage: this.state.perPage, updatePage: this.updatePage })
+	    );
+	  }
+	});
+
+	module.exports = BlogPostBox;
+
+/***/ },
 /* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29990,79 +30052,20 @@
 
 
 /***/ },
-/* 170 */,
-/* 171 */,
-/* 172 */,
-/* 173 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(162);
-	var $ = __webpack_require__(169);
-	var BlogPostList = __webpack_require__(174);
-	var PaginateBlogPosts = __webpack_require__(176);
-
-	var BlogPostBox = React.createClass({
-	  displayName: 'BlogPostBox',
-
-	  getInitialState: function getInitialState() {
-	    return { data: [], showData: [], page: 1, perPage: 3 };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    $.ajax({
-	      url: this.props.url,
-	      dataType: 'json',
-	      cache: false,
-	      success: function (data) {
-	        var showData = [];
-	        if (data.length > this.state.perPage) {
-	          showData = data.slice(0, this.state.perPage);
-	        } else {
-	          showData = data;
-	        }
-	        this.setState({ showData: showData, data: data });
-	      }.bind(this),
-	      error: function (xhr, status, err) {
-	        console.error(this.props.url, status, err.toString());
-	      }.bind(this)
-	    });
-	  },
-
-	  updatePage: function updatePage(newPage) {
-	    var start = (newPage - 1) * this.state.perPage;
-	    var end = newPage * this.state.perPage;
-	    var showData = this.state.data.slice(start, end);
-	    $('html, body').animate({ scrollTop: 0 }, 'slow', function () {
-	      this.setState({ showData: showData, page: newPage });
-	    }.bind(this));
-	  },
-
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      { className: 'row medium-8 large-7 columns' },
-	      React.createElement(BlogPostList, { data: this.state.showData }),
-	      React.createElement(PaginateBlogPosts, { data: this.state.data, page: this.state.page, perPage: this.state.perPage, updatePage: this.updatePage })
-	    );
-	  }
-	});
-
-	module.exports = BlogPostBox;
-
-/***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(162);
-	var BlogPost = __webpack_require__(175);
+	var BlogPost = __webpack_require__(171);
 
 	var BlogPostList = React.createClass({
 	  displayName: 'BlogPostList',
 
+	  propTypes: {
+	    data: React.PropTypes.array
+	  },
 	  render: function render() {
 	    var commentNodes = this.props.data.map(function (post) {
 	      return React.createElement(BlogPost, { author: post.author, key: post.id, title: post.title, content: post.content,
@@ -30079,7 +30082,7 @@
 	module.exports = BlogPostList;
 
 /***/ },
-/* 175 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30089,6 +30092,12 @@
 	var BlogPost = React.createClass({
 	  displayName: "BlogPost",
 
+	  propTypes: {
+	    title: React.PropTypes.string,
+	    img: React.PropTypes.string,
+	    content: React.PropTypes.string,
+	    author: React.PropTypes.string
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      "div",
@@ -30144,7 +30153,7 @@
 	module.exports = BlogPost;
 
 /***/ },
-/* 176 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30154,6 +30163,12 @@
 	var BlogPostPagination = React.createClass({
 	  displayName: "BlogPostPagination",
 
+	  propTypes: {
+	    data: React.PropTypes.array,
+	    perPage: React.PropTypes.number,
+	    updatePage: React.PropTypes.func,
+	    page: React.PropTypes.number
+	  },
 	  generatePageNodes: function generatePageNodes() {
 	    var total = Math.ceil(this.props.data.length / this.props.perPage);
 	    var pageNodes = [];

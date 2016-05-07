@@ -1,6 +1,12 @@
 var React = require('react');
 
 var BlogPostPagination = React.createClass({
+  propTypes: {
+    data: React.PropTypes.array,
+    perPage: React.PropTypes.number,
+    updatePage: React.PropTypes.func,
+    page: React.PropTypes.number
+  },
   generatePageNodes: function() {
     var total = Math.ceil(this.props.data.length / this.props.perPage);
     var pageNodes = [];

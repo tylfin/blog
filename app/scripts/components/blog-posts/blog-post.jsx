@@ -1,6 +1,12 @@
 var React = require('react');
 
 var BlogPost = React.createClass({
+  propTypes: {
+    title: React.PropTypes.string,
+    img: React.PropTypes.string,
+    content: React.PropTypes.string,
+    author: React.PropTypes.string
+  },
   render: function() {
     return (
       <div className="blog-post">

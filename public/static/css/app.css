@@ -60,8 +60,6 @@ i.large  { font-size: 10rem; }
   position:fixed;
   width:100%;
   z-index: 100;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);*/
 }
 
 .top-bar ul {

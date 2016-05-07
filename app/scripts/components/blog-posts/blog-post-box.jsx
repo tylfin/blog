@@ -4,6 +4,9 @@ var BlogPostList = require('./blog-post-list');
 var PaginateBlogPosts = require('./blog-post-pagination');
 
 var BlogPostBox = React.createClass({
+  propTypes: {
+    url: React.PropTypes.string
+  },
   getInitialState: function() {
     return {data: [], showData: [], page: 1, perPage: 3};
   },
@@ -24,6 +27,7 @@ var BlogPostBox = React.createClass({
         this.setState({showData: showData, data: data});
       }.bind(this),
       error: function(xhr, status, err) {
+        /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });

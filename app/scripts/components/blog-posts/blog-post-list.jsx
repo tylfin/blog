@@ -2,6 +2,9 @@ var React = require('react');
 var BlogPost = require('./blog-post');
 
 var BlogPostList = React.createClass({
+  propTypes: {
+    data:React.PropTypes.array
+  },
   render: function () {
     var commentNodes = this.props.data.map(function(post) {
       return (

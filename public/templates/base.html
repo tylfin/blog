@@ -14,10 +14,11 @@
 </head>
 <body>
 
-  <!-- <div class="loader">
+  <div class="loader">
       <div class="spinner">
+        <div data-pace-options='{ "ajax": false, "minTime": 2000 }' class="pace pace-inactive"></div>
       </div>
-  </div> -->
+    </div>
 
 <!-- TOP BAR START  -->
   <div class="center-logo show-for-medium">
@@ -43,20 +44,12 @@
 
   <div class="show-for-medium">
     <div class="front-banner callout large primary">
-      <video style="min-width:100%; min-height:100%;" width="100%" poster="{{ url_for('static', filename='img/banner.jpg' )}}" autoplay="autoplay" loop>
-        <source style="padding-top: 20px;" src="{{ url_for('static', filename='video/banner.mp4' )}}" type="video/mp4" />
+      <video width="" height="" style="min-width: 100%;min-height: 100%;width: auto;position: absolute;" class="media-player" poster="{{ url_for('static', filename='img/banner.jpg' )}}" autoplay="" loop="" src="{{ url_for('static', filename='video/banner.mp4' )}}">
       </video>
     </div>
   </div>
   <div class="show-for-small-only" style="padding-top: 5em;"></div>
-  <!-- TESTING -->
-  <div class="pace pace-inactive">
-    <div class="pace-progress">
-      <div class="pace-progress-inner"></div>
-      FOOBAR
-    </div>
-    <div class="pace-activity"></div>
-  </div>
+
   <div id="content">{% block content %}{% endblock %}</div>
   <hr />
   <div id="footer">
@@ -85,7 +78,19 @@
     {% endblock %}
   </div>
 </body>
-<link type='text/javascript' src="{{ url_for('static', filename='scripts/vendor/foundation.js') }}">
-<link type='text/javascript' src="{{ url_for('static', filename='scripts/app.js') }}">
-<script type='text/javascript' src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js" />
+
+<!-- SCRIPTS  -->
+<script type='text/javascript' src="{{ url_for('static', filename='scripts/vendor/jquery.js') }}"></script>
+<script type='text/javascript' src="{{ url_for('static', filename='scripts/vendor/foundation.js') }}"></script>
+<script type='text/javascript' src="{{ url_for('static', filename='scripts/app.js') }}"></script>
+<script type='text/javascript' src="{{ url_for('static', filename='scripts/vendor/pace.min.js') }}"></script>
+
+<script>
+  //work around documented here: http://stackoverflow.com/questions/8088364/html5-video-will-not-loop
+  $('video').on('ended', function () {
+    this.load();
+    this.play();
+  });
+</script>
+
 </html>

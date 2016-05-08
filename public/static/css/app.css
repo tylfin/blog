@@ -44,11 +44,13 @@
   list-style-type: none;
 }
 .footer-links li {
-  margin-top: .5em;
+  margin-top: 0.3em;
+  line-height: 0px;
 }
 
 i.tiny  { font-size: 1.5rem; }
 i.small  { font-size: 2rem; }
+i.small-plus  { font-size: 3.5rem; }
 i.medium  { font-size: 5rem; }
 i.large  { font-size: 10rem; }
 
@@ -61,22 +63,34 @@ i.large  { font-size: 10rem; }
   width:100%;
   z-index: 100;
 }
+.center-logo {
+  top: 0;
+  text-align: center;
+  position:fixed;
+  z-index: 101;
+  margin-left: auto ;
+  margin-right: auto ;
+  width: 100%;
+  padding: 0px;
+  line-height: 0px;
+  pointer-events: none;
+}
 
 .top-bar ul {
   background-color: #fff;
 }
 
-.top-bar-text-padding a {
-  padding-left:.7em;
-  padding-right:.7em;
-}
-
 .front-banner {
-  padding-top: 24px !important;
+  padding-top: 0px !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
-  padding-bottom: 250px !important;
+  padding-bottom: 0px !important;
+  line-height: 0px;
   border: 0px;
-  background-size: 100% 275px;
-  box-shadow: 0 0 5px 2px #555;
+  overflow: hidden;
+  height: 30em;
+  background-color: #fff;
+  background-size: cover;
+  /*background-size: 100% 10px;*/
+  /*box-shadow: 0 0 5px 2px #555;*/
 }

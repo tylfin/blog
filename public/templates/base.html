@@ -13,29 +13,34 @@
   {% endblock %}
 </head>
 <body>
+
+<!-- TOP BAR START  -->
+  <div class="center-logo show-for-medium">
+      <i style="pointer-events: auto;" class="medium fi-social-github"></i>
+  </div>
+
   <div class="top-bar">
-    <div style="font-size:120%;" class="row fullWidth">
-      <div class="medium-4 small-12 columns text-left small-only-text-center top-bar-text-padding">
-        <a href="/blog-posts">Blog</a>
-        <a href="/resume">Resume</a>
-      </div>
-      <div class="show-for-medium">
-        <div class="medium-4 small-12 columns text-center small-only-text-center">
-          <a style="color: #0a0a0a;"href="/"><i class="fi-social-github small"></i></a>
-        </div>
-        <div class="medium-4 small-12 columns text-right small-only-text-center top-bar-text-padding">
-          <a href="#"><i class="fi-social-github small"></i></a>
-          <a href="#"><i class="fi-social-twitter small"></i></a>
-          <a href="#"><i class="fi-social-instagram small"></i></a>
-        </div>
-      </div>
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog-posts">Blog</a></li>
+        <li><a href="/resume">Resume</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right show-for-medium">
+      <ul class="menu">
+        <li><a href="https://github.com/tylfin" target="_blank"><i class="fi-social-github tiny"></i></a></li>
+        <li><a href="https://twitter.com/tylfin" target="_blank"><i class="fi-social-twitter tiny"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/tyler-finethy-37902195" target="_blank"><i class="fi-social-linkedin tiny"></i></a></li>
+      </ul>
     </div>
   </div>
 
   <div class="show-for-medium">
-    <div style="background-image:url({{ url_for('static', filename='img/tmp-banner.jpg') }})"  class="front-banner callout large primary">
-      <div class="row column text-center">
-      </div>
+    <div class="front-banner callout large primary">
+      <video style="min-width:100%; min-height:100%;" width="100%" poster="{{ url_for('static', filename='img/banner.jpg' )}}" autoplay="autoplay" loop>
+        <source style="padding-top: 20px;" src="{{ url_for('static', filename='video/banner.mp4' )}}" type="video/mp4" />
+      </video>
     </div>
   </div>
   <div class="show-for-small-only" style="padding-top: 5em;"></div>
@@ -48,28 +53,18 @@
       <div class="row full-width">
         <div class="small-12 medium-3 large-4 columns">
           <i class="fi-laptop"></i>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum maiores alias ea sunt facilis impedit fuga dignissimos illo quaerat iure in nobis id quos, eaque nostrum! Unde, voluptates suscipit repudiandae!</p>
+          <p>Software Engineer stuff</p>
         </div>
         <div class="small-12 medium-3 large-4 columns">
           <i class="fi-star"></i>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit impedit consequuntur at! Amet sed itaque nostrum, distinctio eveniet odio, id ipsam fuga quam minima cumque nobis veniam voluptates deserunt!</p>
+          <p>Aboot me</p>
         </div>
-        <div class="small-6 medium-3 large-2 columns">
-          <h4>Work With Me</h4>
+        <div class="small-12 medium-3 large-4 columns">
+          <h4>Social Media</h4>
           <ul class="footer-links">
-            <li><a href="#">What I Do</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">FAQ's</a></li>
-          </ul>
-        </div>
-        <div class="small-6 medium-3 large-2 columns">
-          <h4>Follow Me</h4>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fi-social-github small"></i> GitHub</a></li>
-            <li><a href="#"><i class="fi-social-twitter small"></i> Twitter</a></li>
-            <li><a href="#"><i class="fi-social-instagram small"></i> Instagram</a></li>
+            <li><a href="https://github.com/tylfin" target="_blank"><i class="fi-social-github small-plus"></i></a></li>
+            <li><a href="https://twitter.com/tylfin" target="_blank"><i class="fi-social-twitter small-plus"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/tyler-finethy-37902195" target="_blank"><i class="fi-social-linkedin small-plus"></i></a></li>
           </ul>
         </div>
       </div>

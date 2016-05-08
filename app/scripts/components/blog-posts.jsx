@@ -1,8 +1,8 @@
 'use strict'
 
-var ReactDOM = require('react-dom');
-var React = require('react');
-var BlogPostBox = require('./blog-posts/blog-post-box');
+var ReactDOM = require('react-dom'),
+  React = require('react'),
+  BlogPostBox = require('./blog-posts/blog-post-box');
 
 ReactDOM.render(
   <BlogPostBox url="/api/posts" />,

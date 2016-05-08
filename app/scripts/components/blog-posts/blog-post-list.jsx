@@ -1,5 +1,5 @@
-var React = require('react');
-var BlogPost = require('./blog-post');
+var React = require('react'),
+  BlogPost = require('./blog-post');
 
 var BlogPostList = React.createClass({
   propTypes: {

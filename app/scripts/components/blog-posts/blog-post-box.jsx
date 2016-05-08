@@ -1,7 +1,7 @@
-var React = require('react');
-var $ = require('jquery')
-var BlogPostList = require('./blog-post-list');
-var PaginateBlogPosts = require('./blog-post-pagination');
+var React = require('react'),
+  $ = require('jquery'),
+  BlogPostList = require('./blog-post-list'),
+  PaginateBlogPosts = require('./blog-post-pagination');
 
 var BlogPostBox = React.createClass({
   propTypes: {

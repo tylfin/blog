@@ -46,9 +46,9 @@
 
 	'use strict';
 
-	var ReactDOM = __webpack_require__(1);
-	var React = __webpack_require__(162);
-	var BlogPostBox = __webpack_require__(168);
+	var ReactDOM = __webpack_require__(1),
+	    React = __webpack_require__(162),
+	    BlogPostBox = __webpack_require__(168);
 
 	ReactDOM.render(React.createElement(BlogPostBox, { url: '/api/posts' }), document.getElementById('blog-posts'));
 
@@ -20146,10 +20146,10 @@
 
 	'use strict';
 
-	var React = __webpack_require__(162);
-	var $ = __webpack_require__(169);
-	var BlogPostList = __webpack_require__(170);
-	var PaginateBlogPosts = __webpack_require__(172);
+	var React = __webpack_require__(162),
+	    $ = __webpack_require__(169),
+	    BlogPostList = __webpack_require__(170),
+	    PaginateBlogPosts = __webpack_require__(172);
 
 	var BlogPostBox = React.createClass({
 	  displayName: 'BlogPostBox',
@@ -30057,8 +30057,8 @@
 
 	'use strict';
 
-	var React = __webpack_require__(162);
-	var BlogPost = __webpack_require__(171);
+	var React = __webpack_require__(162),
+	    BlogPost = __webpack_require__(171);
 
 	var BlogPostList = React.createClass({
 	  displayName: 'BlogPostList',

@@ -5,7 +5,7 @@
     "img": "http://placehold.it/850x350",
     "author": "Tyler",
     "comments": 0,
-    "content": "Hey this is a blog post about Kate's poop"
+    "content": "Blog post sample content here"
   },
   {
     "id": "2",
@@ -13,7 +13,7 @@
     "img": "http://placehold.it/850x350",
     "author": "Tyler",
     "comments": 0,
-    "content": "Hey this is a blog post about Kate's poop"
+    "content": "Blog post sample content here"
   },
   {
     "id": "3",
@@ -21,7 +21,7 @@
     "img": "http://placehold.it/850x350",
     "author": "Tyler",
     "comments": 0,
-    "content": "Hey this is a blog post about Kate's poop"
+    "content": "Blog post sample content here"
   },
   {
     "id": "4",
@@ -29,6 +29,6 @@
     "img": "http://placehold.it/850x350",
     "author": "Tyler",
     "comments": 0,
-    "content": "Hey this is a blog post about Kate's poop"
+    "content": "Blog post sample content here"
   }
 ]

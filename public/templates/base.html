@@ -15,10 +15,10 @@
 <body>
 
   <div class="loader">
-      <div class="spinner">
-        <div data-pace-options='{ "ajax": false, "minTime": 2000 }' class="pace pace-inactive"></div>
-      </div>
-    </div>
+    <div class="spinner">
+      <div data-pace-options='{ "ajax": true, "minTime": 1500 }' class="pace pace-inactive">
+  </div>
+</div>
 
 <!-- TOP BAR START  -->
   <div class="center-logo show-for-medium">
@@ -35,12 +35,16 @@
     </div>
     <div class="top-bar-right show-for-medium">
       <ul class="menu">
-        <li><a href="https://github.com/tylfin" target="_blank"><i class="fi-social-github tiny"></i></a></li>
-        <li><a href="https://twitter.com/tylfin" target="_blank"><i class="fi-social-twitter tiny"></i></a></li>
-        <li><a href="https://www.linkedin.com/in/tyler-finethy-37902195" target="_blank"><i class="fi-social-linkedin tiny"></i></a></li>
+        <li><a href="https://github.com/tylfin" target="_blank"><i class="fi-social-github small"></i></a></li>
+        <li><a href="https://twitter.com/tylfin" target="_blank"><i class="fi-social-twitter small"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/tyler-finethy-37902195" target="_blank"><i class="fi-social-linkedin small"></i></a></li>
       </ul>
     </div>
   </div>
+
+<!-- TOP BAR END -->
+
+<!-- VIDEO START -->
 
   <div class="show-for-medium">
     <div class="front-banner callout large primary">
@@ -50,11 +54,20 @@
   </div>
   <div class="show-for-small-only" style="padding-top: 5em;"></div>
 
+<!-- VIDEO END -->
+
+<!-- CONTENT START -->
+
   <div id="content">{% block content %}{% endblock %}</div>
+
+<!-- CONTENT END -->
+
   <hr />
+
+<!-- FOOTER START -->
+
   <div id="footer">
     {% block footer %}
-    <!-- Footer -->
     <footer class="footer">
       <div class="row full-width">
         <div class="small-12 medium-3 large-4 columns">
@@ -79,18 +92,22 @@
   </div>
 </body>
 
-<!-- SCRIPTS  -->
+<!-- FOOTER END -->
+
+<!-- SCRIPTS START  -->
 <script type='text/javascript' src="{{ url_for('static', filename='scripts/vendor/jquery.js') }}"></script>
 <script type='text/javascript' src="{{ url_for('static', filename='scripts/vendor/foundation.js') }}"></script>
 <script type='text/javascript' src="{{ url_for('static', filename='scripts/app.js') }}"></script>
 <script type='text/javascript' src="{{ url_for('static', filename='scripts/vendor/pace.min.js') }}"></script>
-
+<!--
+inline script for video loop workaround (chrome browser)
+http://stackoverflow.com/questions/8088364/html5-video-will-not-loop
+-->
 <script>
-  //work around documented here: http://stackoverflow.com/questions/8088364/html5-video-will-not-loop
   $('video').on('ended', function () {
     this.load();
     this.play();
   });
 </script>
-
+<!-- SCRIPTS END -->
 </html>

@@ -1,0 +1,33 @@
+---
+title: "Support"
+author: "Tyler Finethy"
+date: "10/24/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(hrbrthemes)
+```
+
+## Student Assessment Scores
+
+
+```{r}
+dat <- data.frame(x = c(round(rnorm(100, mean = 85, sd = 5))))
+
+# Ensure that all values fall between 0 and 100
+dat$x[dat$x > 100] <- 100
+dat$x[dat$x < 0] <- 0
+
+# Break the results into three groups based on score
+dat$group <- ifelse(dat$x<=80, "low", ifelse(dat$x<=90, "medium", "high"))
+
+ggplot(dat, aes(x = x, fill=group)) +
+  geom_histogram(aes(y = ..density..), binwidth=.9, alpha=0.9, color="grey") + 
+  stat_function(fun=dnorm, size=1.5, color="gold1", args=list(mean=mean(dat$x), sd=sd(dat$x))) +
+  labs(title = "Student Assessment Scores", x = "Student Scores", y = "# of Students", group = "NO\n", hjust = 0) +
+  guides(fill=guide_legend("Student Mastery")) +
+  theme_ipsum()
+```
+
